@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulario de Recolección</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>Formulario de recolección de información</h1>
+      <p class="subtitle">
+        Completa los campos para registrar la información específica que necesitas.
+      </p>
+
+      <form id="infoForm" novalidate>
+        <fieldset>
+          <legend>Datos de contacto</legend>
+
+          <label for="nombre">Nombre completo *</label>
+          <input id="nombre" name="nombre" type="text" required minlength="3" />
+
+          <label for="correo">Correo electrónico *</label>
+          <input id="correo" name="correo" type="email" required />
+
+          <label for="telefono">Teléfono</label>
+          <input id="telefono" name="telefono" type="tel" pattern="[0-9+\-()\s]{7,}" />
+        </fieldset>
+
+        <fieldset>
+          <legend>Información específica</legend>
+
+          <label for="categoria">Categoría *</label>
+          <select id="categoria" name="categoria" required>
+            <option value="">Selecciona una opción</option>
+            <option>Académica</option>
+            <option>Laboral</option>
+            <option>Salud</option>
+            <option>Legal</option>
+            <option>Otra</option>
+          </select>
+
+          <label for="detalle">Describe la información requerida *</label>
+          <textarea
+            id="detalle"
+            name="detalle"
+            rows="4"
+            required
+            minlength="15"
+            placeholder="Ejemplo: Necesito recopilar historial académico de los últimos 5 años..."
+          ></textarea>
+
+          <label for="fecha">Fecha límite</label>
+          <input id="fecha" name="fecha" type="date" />
+
+          <label for="prioridad">Prioridad</label>
+          <div class="radio-group" id="prioridad">
+            <label><input type="radio" name="prioridad" value="Baja" checked /> Baja</label>
+            <label><input type="radio" name="prioridad" value="Media" /> Media</label>
+            <label><input type="radio" name="prioridad" value="Alta" /> Alta</label>
+          </div>
+        </fieldset>
+
+        <label class="checkbox">
+          <input id="consentimiento" name="consentimiento" type="checkbox" required />
+          Confirmo que la información proporcionada es correcta. *
+        </label>
+
+        <div class="actions">
+          <button type="reset" class="secondary">Limpiar</button>
+          <button type="submit">Enviar</button>
+        </div>
+
+        <p id="estado" class="estado" aria-live="polite"></p>
+      </form>
+
+      <section id="resumen" class="resumen" hidden>
+        <h2>Resumen enviado</h2>
+        <pre id="resultado"></pre>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
